@@ -1,6 +1,9 @@
 .settings/*
 data/*
-!data/*.list
+!data/bt426.list
+!data/plp273.list
+!data/plp364.list
+!data/plp399.list
 !.gitignore
 .project
 .classpath
