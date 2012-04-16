@@ -1,4 +1,6 @@
 .settings/*
+data/*
+!data/*.list
 !.gitignore
 .project
 .classpath

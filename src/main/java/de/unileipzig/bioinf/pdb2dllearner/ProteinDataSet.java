@@ -3,21 +3,15 @@ package de.unileipzig.bioinf.pdb2dllearner;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.io.LineNumberReader;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Random;
-
 import org.apache.log4j.Logger;
 
 public class ProteinDataSet {
 	
 	private static Logger _logger = Logger.getLogger(HelixRDFCreator.class);
 	
-	private static String _dataDir = "../test/pdb/";
+	private static String _dataDir = "data/";
 
 	
 	// data set 1
@@ -156,64 +150,5 @@ public class ProteinDataSet {
 			species = "";
 		}
 		return species;
-	}
-	
-	// OLD STUFF DO NOT USE
-	
-	/* public ProteinDataSet (int setsize) {
-		
-		try {
-			// we read in the online file with all PDB-entries
-			URL pdbEntryType = new URL("ftp://ftp.wwpdb.org/pub/pdb/derived_data/pdb_entry_type.txt");
-			LineNumberReader pdbproteins = new LineNumberReader(new InputStreamReader(pdbEntryType.openStream()));
-			// read all lines in lines			
-			ArrayList<String> lines = this.readInFile(pdbproteins); 
-			pdbproteins.close();
-			// get number of lines			
-			int linenr = lines.size();
-			System.out.println("PDB Prot File has "+linenr+" lines." );
-			
-			// handling of incorrect setsize values
-			if ((2*setsize) >= linenr) {
-				setsize = linenr / 2;
-			}
-			if (setsize < 0) {
-				setsize = 0;
-			}
-			
-			this._proteinSet = this.createSet(setsize, linenr, lines);		
-		} catch (MalformedURLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-	
-	private String[] pdbEntry(int linenr, ArrayList<String> lines){
-		String line =(String) lines.get(linenr);
-		return  line.split("\t"); 
-	}
-	
-	//creates Sets of PDB IDs equal to setsize
-	private ArrayList<PdbProtein> createSet(int setsize, int linenr, ArrayList<String> lines){
-		
-		ArrayList<PdbProtein> set = new ArrayList<PdbProtein>(setsize);
-		HashMap<Integer,String> setmap = new HashMap<Integer,String>(setsize);
-
-		Random randomGenerator = new Random();
-		for (int i = 0; i < setsize; i++) {
-			int lnr = randomGenerator.nextInt(linenr);
-			while (setmap.containsKey(Integer.valueOf(lnr))) {
-				lnr = randomGenerator.nextInt(linenr);
-			}
-			set.add(new PdbProtein(this.getPdbID(lnr, lines)));
-			setmap.put(Integer.valueOf(lnr), set.get(i).getPdbID());
-		}
-		return set;
-	}
-	
-	*/
-	
+	}	
 }

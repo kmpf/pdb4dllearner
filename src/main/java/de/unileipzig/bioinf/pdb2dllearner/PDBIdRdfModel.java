@@ -89,7 +89,7 @@ public class PDBIdRdfModel {
         		_pdbIdModel.add(extractDataForPdbAndChain(model, _protein.getPdbID(), _protein.getChainID()));
         	}
         	try {
-				PrintStream test = new PrintStream (new File("../test/pdb/" + this.getProtein().getPdbID() + ".rdf"));
+				PrintStream test = new PrintStream (new File("data/" + this.getProtein().getPdbID() + ".rdf"));
 				_pdbIdModel.write(test, "RDF/XML");
 				test.close();
 			} catch (FileNotFoundException e) {

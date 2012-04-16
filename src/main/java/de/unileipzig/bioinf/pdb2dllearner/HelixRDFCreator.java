@@ -31,7 +31,7 @@ public class HelixRDFCreator {
 	private static Logger _logger = Logger.getLogger(HelixRDFCreator.class);
 	private static Logger _rootLogger = Logger.getRootLogger();
 	
-	private static String _dataDir = "../test/pdb/";
+	private static String _dataDir = "data/";
 	private static File _dir = new File(_dataDir);
 	
 	/**
@@ -113,8 +113,8 @@ public class HelixRDFCreator {
 		 * Warum funktionieren die Abfragen mit den untenstehenden PDB IDs nicht???
 		 */
 //		PDBProtein testProtein = new PDBProtein("1HTR","P");
-//		PDBProtein testProtein = new PDBProtein("2W9Y","A");
-		PDBProtein testProtein = new PDBProtein("3A4R","A");
+		PDBProtein testProtein = new PDBProtein("2W9Y","A");
+//		PDBProtein testProtein = new PDBProtein("3A4R","A");
 
 		
 		/*
@@ -153,8 +153,12 @@ public class HelixRDFCreator {
 				PDBProtein protein = proteinSet.getProteinset().get(i);
 				_logger.info("Start with extracting data from: " + protein.getPdbID());
 				String pdbDir = _dataDir +  protein.getPdbID() + "/";
+				_logger.info("Directory: " +pdbDir);
 				File directory = new File(pdbDir);
-				if(! directory.exists()) directory.mkdir();
+				if(! directory.exists()) {
+					_logger.info("Creating directory " + pdbDir);
+					directory.mkdir();
+				}
 				//
 				//String arffFilePath = pdbDir + protein.getArffFileName();
 				
